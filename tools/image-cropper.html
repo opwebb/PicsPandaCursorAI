@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Cropper - PicsPanda</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/tool-enhancements.css">
+    <link rel="stylesheet" href="../css/image-cropper.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <meta name="description" content="Crop unwanted parts from your images with PicsPanda's free online Image Cropper tool.">
+    <meta name="theme-color" content="#4a6cf7">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../images/picspanda-logo.svg" alt="PicsPanda Logo">
+                    <span>PicsPanda</span>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html#image-tools">Image Tools</a></li>
+                    <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="tool-page-header">
+        <div class="container">
+            <div class="tool-page-icon">
+                <i class="fas fa-crop"></i>
+            </div>
+            <h1>Image Cropper</h1>
+            <p>Crop unwanted parts from your images with precision.</p>
+        </div>
+    </section>
+
+    <section class="tool-interface">
+        <div class="container">
+            <div class="tool-content">
+                <div class="upload-area" id="upload-area">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drop files here or click to upload</h3>
+                    <p>Supported formats: JPG, PNG, WEBP, GIF, BMP</p>
+                    <input type="file" id="file-input" multiple hidden>
+                    <button class="upload-btn">Choose Files</button>
+                </div>
+                <div class="file-list" id="file-list"></div>
+                <div class="tool-options" id="tool-options">
+                    <div class="option-group">
+                        <label for="crop-method">Crop Method</label>
+                        <select id="crop-method">
+                            <option value="custom">Custom</option>
+                            <option value="square">Square (1:1)</option>
+                            <option value="16:9">16:9 Ratio</option>
+                            <option value="4:3">4:3 Ratio</option>
+                            <option value="1:1">1:1 Ratio</option>
+                        </select>
+                    </div>
+                    <div class="option-group" id="custom-crop-note">
+                        <p class="note">For custom cropping, you'll be able to select the area after clicking "Crop Images".</p>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="process-btn" id="process-btn" disabled>Crop Images</button>
+                </div>
+                <div class="results" id="results"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-info">
+        <div class="container">
+            <h2>About Image Cropper</h2>
+            <p>Our Image Cropper tool allows you to remove unwanted parts of your images and focus on the important elements. You can crop using predefined aspect ratios or create custom crops. All processing happens directly in your browser - your files never leave your computer, ensuring maximum privacy and security.</p>
+            
+            <h3>How to Crop Images</h3>
+            <ol>
+                <li>Upload your image files by dragging and dropping them or clicking the "Choose Files" button.</li>
+                <li>Select a crop method: Custom, Square, 16:9, 4:3, or 1:1.</li>
+                <li>Click the "Crop Images" button to process your files.</li>
+                <li>For custom cropping, you'll be able to select the area after clicking the button.</li>
+                <li>Download your cropped images individually or as a ZIP archive.</li>
+            </ol>
+            
+            <h3>Features</h3>
+            <ul>
+                <li>Crop with predefined aspect ratios</li>
+                <li>Custom cropping for precise control</li>
+                <li>Support for multiple image formats</li>
+                <li>Batch processing for multiple files</li>
+                <li>100% free with no watermarks</li>
+                <li>Private and secure - no server uploads</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/picspanda-logo.svg" alt="PicsPanda Logo">
+                    <span>PicsPanda</span>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html#image-tools">Image Tools</a></li>
+                        <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                        <li><a href="../index.html#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 PicsPanda. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/image-cropper.js"></script>
+</body>
+</html> 

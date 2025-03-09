@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Watermark - PicsPanda</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/tool-enhancements.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <meta name="description" content="Add text or image watermarks to protect your work with PicsPanda's free online Image Watermark tool.">
+    <meta name="theme-color" content="#4a6cf7">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../images/picspanda-logo.svg" alt="PicsPanda Logo">
+                    <span>PicsPanda</span>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html#image-tools">Image Tools</a></li>
+                    <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="tool-page-header">
+        <div class="container">
+            <div class="tool-page-icon">
+                <i class="fas fa-copyright"></i>
+            </div>
+            <h1>Image Watermark</h1>
+            <p>Add text or image watermarks to protect your work.</p>
+        </div>
+    </section>
+
+    <section class="tool-interface">
+        <div class="container">
+            <div class="tool-content">
+                <div class="upload-area" id="upload-area">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drop files here or click to upload</h3>
+                    <p>Supported formats: JPG, PNG, WEBP, GIF, BMP</p>
+                    <input type="file" id="file-input" multiple hidden>
+                    <button class="upload-btn">Choose Files</button>
+                </div>
+                <div class="file-list" id="file-list"></div>
+                <div class="tool-options" id="tool-options">
+                    <div class="option-group">
+                        <label for="watermark-type">Watermark Type</label>
+                        <select id="watermark-type">
+                            <option value="text">Text Watermark</option>
+                            <option value="image">Image Watermark</option>
+                        </select>
+                    </div>
+                    <div class="option-group" id="text-watermark-options">
+                        <label for="watermark-text">Watermark Text</label>
+                        <input type="text" id="watermark-text" value="© Copyright">
+                    </div>
+                    <div class="option-group" id="text-watermark-options">
+                        <label for="text-color">Text Color</label>
+                        <input type="color" id="text-color" value="#ffffff">
+                    </div>
+                    <div class="option-group" id="text-watermark-options">
+                        <label for="font-size">Font Size</label>
+                        <input type="range" id="font-size" min="10" max="100" value="24">
+                        <span id="font-size-value">24</span>
+                    </div>
+                    <div class="option-group" id="image-watermark-options" style="display: none;">
+                        <label for="watermark-image">Watermark Image</label>
+                        <input type="file" id="watermark-image" accept="image/*">
+                    </div>
+                    <div class="option-group" id="image-watermark-options" style="display: none;">
+                        <label for="image-opacity">Image Opacity</label>
+                        <input type="range" id="image-opacity" min="10" max="100" value="50">
+                        <span id="image-opacity-value">50</span>
+                    </div>
+                    <div class="option-group">
+                        <label for="watermark-position">Position</label>
+                        <select id="watermark-position">
+                            <option value="center">Center</option>
+                            <option value="top-left">Top Left</option>
+                            <option value="top-right">Top Right</option>
+                            <option value="bottom-left">Bottom Left</option>
+                            <option value="bottom-right" selected>Bottom Right</option>
+                            <option value="tile">Tile (Repeat)</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label for="watermark-opacity">Overall Opacity</label>
+                        <input type="range" id="watermark-opacity" min="10" max="100" value="70">
+                        <span id="watermark-opacity-value">70</span>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="process-btn" id="process-btn" disabled>Add Watermark</button>
+                </div>
+                <div class="results" id="results"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-info">
+        <div class="container">
+            <h2>About Image Watermark</h2>
+            <p>Our Image Watermark tool allows you to add text or image watermarks to your photos to protect your copyright and prevent unauthorized use. You can customize the watermark text, font, color, position, and opacity. All processing happens directly in your browser - your files never leave your computer, ensuring maximum privacy and security.</p>
+            
+            <h3>How to Add Watermarks to Images</h3>
+            <ol>
+                <li>Upload your image files by dragging and dropping them or clicking the "Choose Files" button.</li>
+                <li>Select the watermark type: text or image.</li>
+                <li>For text watermarks, enter your text and customize font size and color.</li>
+                <li>For image watermarks, upload a watermark image (preferably with transparency).</li>
+                <li>Choose the watermark position and adjust opacity.</li>
+                <li>Click the "Add Watermark" button to process your files.</li>
+                <li>Download your watermarked images individually or as a ZIP archive.</li>
+            </ol>
+            
+            <h3>Features</h3>
+            <ul>
+                <li>Add text or image watermarks</li>
+                <li>Customize watermark text, font size, and color</li>
+                <li>Choose from multiple watermark positions</li>
+                <li>Adjust watermark opacity</li>
+                <li>Support for multiple image formats</li>
+                <li>Batch processing for multiple files</li>
+                <li>100% free with no watermarks</li>
+                <li>Private and secure - no server uploads</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/picspanda-logo.svg" alt="PicsPanda Logo">
+                    <span>PicsPanda</span>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html#image-tools">Image Tools</a></li>
+                        <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                        <li><a href="../index.html#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 PicsPanda. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/enhanced-tools.js" data-tool-id="image-watermark"></script>
+</body>
+</html> 

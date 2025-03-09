@@ -1,0 +1,890 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #4a6cf7;
+    --secondary-color: #6c757d;
+    --accent-color: #ff6b6b;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: #f5f7fa;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: var(--transition);
+}
+
+a:hover {
+    color: #3a56d4;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Header Styles */
+header {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    color: var(--dark-color);
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo span {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+nav ul {
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav ul li a {
+    color: var(--dark-color);
+    font-weight: 500;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+.mobile-menu-btn {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--dark-color);
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #4a6cf7 0%, #6a11cb 100%);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+}
+
+.search-box {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+    font-size: 1rem;
+}
+
+.search-box button {
+    background-color: white;
+    color: var(--primary-color);
+    padding: 0 20px;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    font-size: 1.1rem;
+}
+
+.search-box button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Tools Section */
+.tools-section {
+    padding: 60px 0;
+}
+
+.tools-section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2rem;
+    color: var(--dark-color);
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.tool-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    cursor: pointer;
+    text-align: center;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tool-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.tool-card h3 {
+    margin-bottom: 10px;
+    color: var(--dark-color);
+}
+
+.tool-card p {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.tool-link {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.tool-link:hover {
+    background-color: #3a56d4;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Tool Interface */
+.tool-interface {
+    background-color: white;
+    padding: 60px 0;
+    margin-top: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.tool-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.tool-header h2 {
+    font-size: 2rem;
+    color: var(--dark-color);
+    margin-bottom: 10px;
+}
+
+.tool-header p {
+    color: var(--secondary-color);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.tool-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.upload-area {
+    border: 2px dashed #ccc;
+    border-radius: var(--border-radius);
+    padding: 40px;
+    text-align: center;
+    margin-bottom: 30px;
+    transition: var(--transition);
+}
+
+.upload-area:hover {
+    border-color: var(--primary-color);
+}
+
+.upload-area i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.upload-area h3 {
+    margin-bottom: 10px;
+}
+
+.upload-area p {
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+.upload-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: var(--border-radius);
+}
+
+.upload-btn:hover {
+    background-color: #3a56d4;
+}
+
+.file-list {
+    margin-bottom: 30px;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: var(--border-radius);
+    margin-bottom: 10px;
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+}
+
+.file-icon {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-right: 15px;
+}
+
+.file-name {
+    font-weight: 500;
+}
+
+.file-size {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    margin-left: 10px;
+}
+
+.file-actions button {
+    background-color: transparent;
+    color: var(--secondary-color);
+    font-size: 1rem;
+    margin-left: 10px;
+}
+
+.file-actions button:hover {
+    color: var(--danger-color);
+}
+
+.tool-options {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 30px;
+}
+
+.option-group {
+    margin-bottom: 20px;
+}
+
+.option-group:last-child {
+    margin-bottom: 0;
+}
+
+.option-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.option-group select,
+.option-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
+
+.action-buttons {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.process-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: var(--border-radius);
+}
+
+.process-btn:hover {
+    background-color: #3a56d4;
+}
+
+.process-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.results {
+    margin-top: 30px;
+}
+
+.result-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: var(--border-radius);
+    margin-bottom: 10px;
+}
+
+.result-info {
+    display: flex;
+    align-items: center;
+}
+
+.result-icon {
+    font-size: 1.5rem;
+    color: var(--success-color);
+    margin-right: 15px;
+}
+
+.result-name {
+    font-weight: 500;
+}
+
+.result-size {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    margin-left: 10px;
+}
+
+.result-actions button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    border-radius: var(--border-radius);
+    margin-left: 10px;
+}
+
+.result-actions button:hover {
+    background-color: #3a56d4;
+}
+
+/* About Section */
+.about-section {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+.about-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.about-section > .container > p {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature {
+    text-align: center;
+    padding: 30px;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.feature i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.feature h3 {
+    margin-bottom: 15px;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 60px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.footer-logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.footer-logo span {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+}
+
+.footer-links h4 {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+    color: #adb5bd;
+}
+
+.footer-links ul li a:hover {
+    color: white;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #495057;
+    color: #adb5bd;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    .tool-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        max-width: 720px;
+    }
+    
+    .tool-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .tool-page-header {
+        padding: 50px 0;
+    }
+    
+    .tool-page-icon {
+        font-size: 2.5rem;
+    }
+    
+    .tool-page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .tool-page-header p {
+        font-size: 1.1rem;
+    }
+    
+    .tool-info {
+        padding: 50px 0;
+    }
+    
+    .tool-info h2 {
+        font-size: 1.8rem;
+    }
+    
+    .tool-info h3 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 540px;
+    }
+    
+    header {
+        padding: 15px 0;
+    }
+    
+    .logo span {
+        font-size: 1.3rem;
+    }
+    
+    .logo img {
+        width: 30px;
+    }
+    
+    nav ul {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .hero {
+        padding: 60px 0;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .tool-cards {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .tool-card {
+        padding: 15px;
+    }
+    
+    .tool-card-icon {
+        font-size: 1.5rem;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .tool-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .tool-page-header {
+        padding: 40px 0;
+    }
+    
+    .tool-page-icon {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+    
+    .tool-page-header h1 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+    
+    .tool-page-header p {
+        font-size: 1rem;
+    }
+    
+    .tool-interface {
+        padding: 30px 0;
+    }
+    
+    .tool-content {
+        padding: 15px;
+    }
+    
+    .upload-area {
+        padding: 20px;
+    }
+    
+    .tool-info {
+        padding: 40px 0;
+    }
+    
+    .tool-info h2 {
+        font-size: 1.5rem;
+    }
+    
+    .tool-info h3 {
+        font-size: 1.2rem;
+        margin: 20px 0 10px;
+    }
+    
+    .tool-info p, .tool-info li {
+        font-size: 0.95rem;
+    }
+    
+    footer {
+        padding: 40px 0 20px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .footer-links {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .hero {
+        padding: 50px 0;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero p {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+    
+    .cta-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    
+    .tool-card {
+        padding: 12px;
+    }
+    
+    .tool-card-icon {
+        font-size: 1.2rem;
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+    }
+    
+    .tool-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .tool-page-header {
+        padding: 30px 0;
+    }
+    
+    .tool-page-icon {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+    
+    .tool-page-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .tool-page-header p {
+        font-size: 0.9rem;
+    }
+    
+    .tool-interface {
+        padding: 20px 0;
+    }
+    
+    .tool-content {
+        padding: 10px;
+    }
+    
+    .upload-area {
+        padding: 15px;
+    }
+    
+    .upload-area h3 {
+        font-size: 1.1rem;
+    }
+    
+    .upload-area p {
+        font-size: 0.9rem;
+    }
+    
+    .upload-btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .tool-info {
+        padding: 30px 0;
+    }
+    
+    .tool-info h2 {
+        font-size: 1.3rem;
+    }
+    
+    .tool-info h3 {
+        font-size: 1.1rem;
+    }
+    
+    .tool-info p, .tool-info li {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+    
+    .footer-logo span {
+        font-size: 1.2rem;
+    }
+    
+    .footer-logo img {
+        width: 25px;
+    }
+    
+    .footer-links h4 {
+        font-size: 1rem;
+    }
+    
+    .footer-links ul li a {
+        font-size: 0.9rem;
+    }
+    
+    .copyright p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Tool Page Styles */
+.tool-page-header {
+    background: linear-gradient(135deg, #4a6cf7 0%, #6a11cb 100%);
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.tool-page-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.tool-page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.tool-page-header p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.tool-info {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+.tool-info h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.tool-info h3 {
+    font-size: 1.5rem;
+    margin: 30px 0 15px;
+}
+
+.tool-info p {
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+.tool-info ul, 
+.tool-info ol {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.tool-info li {
+    margin-bottom: 10px;
+    line-height: 1.7;
+} 

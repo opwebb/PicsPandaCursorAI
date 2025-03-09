@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF to Image - PicsPanda</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/tool-enhancements.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <meta name="description" content="Convert PDF pages to JPG, PNG, or other formats with PicsPanda's free online PDF to Image tool.">
+    <meta name="theme-color" content="#4a6cf7">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../images/picspanda-logo.svg" alt="PicsPanda Logo">
+                    <span>PicsPanda</span>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html#image-tools">Image Tools</a></li>
+                    <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="tool-page-header">
+        <div class="container">
+            <div class="tool-page-icon">
+                <i class="fas fa-file-export"></i>
+            </div>
+            <h1>PDF to Image</h1>
+            <p>Convert PDF pages to JPG, PNG, or other image formats.</p>
+        </div>
+    </section>
+
+    <section class="tool-interface">
+        <div class="container">
+            <div class="tool-content">
+                <div class="upload-area" id="upload-area">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drop files here or click to upload</h3>
+                    <p>Supported formats: PDF</p>
+                    <input type="file" id="file-input" multiple hidden>
+                    <button class="upload-btn">Choose Files</button>
+                </div>
+                <div class="file-list" id="file-list"></div>
+                <div class="tool-options" id="tool-options">
+                    <div class="option-group">
+                        <label for="output-format">Output Format</label>
+                        <select id="output-format">
+                            <option value="jpg">JPG</option>
+                            <option value="png">PNG</option>
+                            <option value="webp">WEBP</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label for="quality">Quality</label>
+                        <input type="range" id="quality" min="1" max="100" value="80">
+                        <span id="quality-value">80</span>
+                    </div>
+                    <div class="option-group">
+                        <label for="dpi">DPI</label>
+                        <select id="dpi">
+                            <option value="72">72 DPI</option>
+                            <option value="96">96 DPI</option>
+                            <option value="150" selected>150 DPI</option>
+                            <option value="300">300 DPI</option>
+                            <option value="600">600 DPI</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label for="page-range">Page Range (e.g., 1-5, 8, 11-13)</label>
+                        <input type="text" id="page-range" placeholder="All Pages">
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="process-btn" id="process-btn" disabled>Convert to Images</button>
+                </div>
+                <div class="results" id="results"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-info">
+        <div class="container">
+            <h2>About PDF to Image</h2>
+            <p>Our PDF to Image tool allows you to convert PDF pages to various image formats including JPG, PNG, and WEBP. This is useful for extracting images from PDFs, creating thumbnails, or using PDF content in presentations. All processing happens directly in your browser - your files never leave your computer, ensuring maximum privacy and security.</p>
+            
+            <h3>How to Convert PDF to Images</h3>
+            <ol>
+                <li>Upload your PDF files by dragging and dropping them or clicking the "Choose Files" button.</li>
+                <li>Select the output image format (JPG, PNG, or WEBP).</li>
+                <li>Adjust the quality and DPI settings as needed.</li>
+                <li>Specify a page range if you only want to convert certain pages.</li>
+                <li>Click the "Convert to Images" button to process your files.</li>
+                <li>Download your converted images individually or as a ZIP archive.</li>
+            </ol>
+            
+            <h3>Features</h3>
+            <ul>
+                <li>Convert PDF pages to multiple image formats</li>
+                <li>Adjust quality and DPI settings for optimal results</li>
+                <li>Convert specific pages or page ranges</li>
+                <li>Batch processing for multiple PDF files</li>
+                <li>100% free with no watermarks</li>
+                <li>Private and secure - no server uploads</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/picspanda-logo.svg" alt="PicsPanda Logo">
+                    <span>PicsPanda</span>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html#image-tools">Image Tools</a></li>
+                        <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                        <li><a href="../index.html#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 PicsPanda. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/enhanced-tools.js" data-tool-id="pdf-to-image"></script>
+</body>
+</html> 

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Compressor - PicsPanda</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/tool-enhancements.css">
+    <link rel="stylesheet" href="../css/image-compressor.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <meta name="description" content="Reduce image file size while maintaining quality with PicsPanda's free online Image Compressor tool.">
+    <meta name="theme-color" content="#4a6cf7">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../images/picspanda-logo.svg" alt="PicsPanda Logo">
+                    <span>PicsPanda</span>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html#image-tools">Image Tools</a></li>
+                    <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="tool-page-header">
+        <div class="container">
+            <div class="tool-page-icon">
+                <i class="fas fa-compress"></i>
+            </div>
+            <h1>Image Compressor</h1>
+            <p>Reduce image file size while maintaining quality.</p>
+        </div>
+    </section>
+
+    <section class="tool-interface">
+        <div class="container">
+            <div class="tool-content">
+                <div class="upload-area" id="upload-area">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drop files here or click to upload</h3>
+                    <p>Supported formats: JPG, PNG, WEBP</p>
+                    <input type="file" id="file-input" multiple hidden>
+                    <button class="upload-btn">Choose Files</button>
+                </div>
+                <div class="file-list" id="file-list"></div>
+                <div class="tool-options" id="tool-options">
+                    <div class="option-group">
+                        <label for="compression-mode">Compression Mode</label>
+                        <select id="compression-mode">
+                            <option value="quality">Compress by Quality</option>
+                            <option value="size">Compress to Target Size</option>
+                        </select>
+                    </div>
+                    
+                    <div id="quality-controls">
+                        <div class="option-group">
+                            <label for="compression-level">Compression Level</label>
+                            <input type="range" id="compression-level" min="1" max="100" value="70">
+                            <span id="compression-level-value">70</span>
+                        </div>
+                    </div>
+                    
+                    <div id="size-controls" style="display: none;">
+                        <div class="option-group">
+                            <label for="target-size">Target Size (KB)</label>
+                            <input type="number" id="target-size" min="1" value="100" step="10">
+                        </div>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label for="maintain-format">
+                            <input type="checkbox" id="maintain-format" checked>
+                            Maintain Original Format
+                        </label>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="process-btn" id="process-btn" disabled>Compress Images</button>
+                </div>
+                <div class="results" id="results"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-info">
+        <div class="container">
+            <h2>About Image Compressor</h2>
+            <p>Our Image Compressor tool helps you reduce the file size of your images while maintaining visual quality. This is perfect for websites, email attachments, or saving storage space. All processing happens directly in your browser - your files never leave your computer, ensuring maximum privacy and security.</p>
+            
+            <h3>How to Compress Images</h3>
+            <ol>
+                <li>Upload your image files by dragging and dropping them or clicking the "Choose Files" button.</li>
+                <li>Choose your compression mode:
+                    <ul>
+                        <li><strong>Compress by Quality</strong>: Adjust the compression level slider - higher values mean smaller file size but potentially lower quality.</li>
+                        <li><strong>Compress to Target Size</strong>: Enter a specific target file size in KB that you want your images to be compressed to.</li>
+                    </ul>
+                </li>
+                <li>Choose whether to maintain the original format or convert to a more efficient format.</li>
+                <li>Click the "Compress Images" button to process your files.</li>
+                <li>Download your compressed images individually or as a ZIP archive.</li>
+            </ol>
+            
+            <h3>Features</h3>
+            <ul>
+                <li>Reduce file size by up to 90% while maintaining good quality</li>
+                <li>Two compression modes: by quality level or to a specific target size</li>
+                <li>Adjustable compression levels to balance size and quality</li>
+                <li>Option to maintain original format or convert to more efficient formats</li>
+                <li>Batch processing for multiple files</li>
+                <li>100% free with no watermarks</li>
+                <li>Private and secure - no server uploads</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/picspanda-logo.svg" alt="PicsPanda Logo">
+                    <span>PicsPanda</span>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html#image-tools">Image Tools</a></li>
+                        <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                        <li><a href="../index.html#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 PicsPanda. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/image-compressor.js"></script>
+</body>
+</html> 

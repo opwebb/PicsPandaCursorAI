@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Blur - PicsPanda</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/tool-enhancements.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <meta name="description" content="Automatically blur faces in images to protect privacy with PicsPanda's free online Face Blur tool.">
+    <meta name="theme-color" content="#4a6cf7">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../images/picspanda-logo.svg" alt="PicsPanda Logo">
+                    <span>PicsPanda</span>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html#image-tools">Image Tools</a></li>
+                    <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="tool-page-header">
+        <div class="container">
+            <div class="tool-page-icon">
+                <i class="fas fa-user-shield"></i>
+            </div>
+            <h1>Face Blur</h1>
+            <p>Automatically detect and blur faces in images to protect privacy.</p>
+        </div>
+    </section>
+
+    <section class="tool-interface">
+        <div class="container">
+            <div class="tool-content">
+                <div class="upload-area" id="upload-area">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drop files here or click to upload</h3>
+                    <p>Supported formats: JPG, PNG, WEBP</p>
+                    <input type="file" id="file-input" multiple hidden>
+                    <button class="upload-btn">Choose Files</button>
+                </div>
+                <div class="file-list" id="file-list"></div>
+                <div class="tool-options" id="tool-options">
+                    <div class="option-group">
+                        <label for="blur-method">Blur Method</label>
+                        <select id="blur-method">
+                            <option value="gaussian" selected>Gaussian Blur</option>
+                            <option value="pixelate">Pixelate</option>
+                            <option value="black">Black Box</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label for="blur-intensity">Blur Intensity</label>
+                        <input type="range" id="blur-intensity" min="1" max="100" value="60">
+                        <span id="blur-intensity-value">60</span>
+                    </div>
+                    <div class="option-group">
+                        <label for="detection-sensitivity">Face Detection Sensitivity</label>
+                        <input type="range" id="detection-sensitivity" min="1" max="100" value="70">
+                        <span id="detection-sensitivity-value">70</span>
+                    </div>
+                    <div class="option-group">
+                        <label for="detection-mode">Detection Mode</label>
+                        <select id="detection-mode">
+                            <option value="faces" selected>Faces Only</option>
+                            <option value="faces-eyes">Faces and Eyes</option>
+                            <option value="custom">Custom Areas (Manual Selection)</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label for="auto-detect">
+                            <input type="checkbox" id="auto-detect" checked>
+                            Automatically Detect Faces
+                        </label>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="process-btn" id="process-btn" disabled>Blur Faces</button>
+                </div>
+                <div class="editor-container" id="editor-container" style="display: none;">
+                    <h3>Face Detection Editor</h3>
+                    <p>Verify detected faces or manually select areas to blur. Drag to create new areas, click existing areas to remove them.</p>
+                    <div class="editor-canvas-container">
+                        <canvas id="editor-canvas"></canvas>
+                    </div>
+                    <div class="editor-controls">
+                        <button id="editor-zoom-in"><i class="fas fa-search-plus"></i> Zoom In</button>
+                        <button id="editor-zoom-out"><i class="fas fa-search-minus"></i> Zoom Out</button>
+                        <button id="editor-reset"><i class="fas fa-sync"></i> Reset View</button>
+                        <button id="editor-apply" class="primary-btn">Apply Blur</button>
+                    </div>
+                </div>
+                <div class="results" id="results"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-info">
+        <div class="container">
+            <h2>About Face Blur</h2>
+            <p>Our Face Blur tool automatically detects and blurs faces in images to protect the privacy of individuals. This is useful for sharing photos on social media, creating documentation, or complying with privacy regulations. All processing happens directly in your browser - your files never leave your computer, ensuring maximum privacy and security.</p>
+            
+            <h3>How to Blur Faces in Images</h3>
+            <ol>
+                <li>Upload your image files by dragging and dropping them or clicking the "Choose Files" button.</li>
+                <li>Select the blur method (Gaussian blur, pixelation, or black box).</li>
+                <li>Adjust the blur intensity and face detection sensitivity.</li>
+                <li>Choose the detection mode (faces only, faces and eyes, or custom areas).</li>
+                <li>Click the "Blur Faces" button to process your files.</li>
+                <li>If needed, verify detected faces or manually select areas in the editor.</li>
+                <li>Download your processed images individually or as a ZIP archive.</li>
+            </ol>
+            
+            <h3>Features</h3>
+            <ul>
+                <li>Automatic face detection using advanced algorithms</li>
+                <li>Multiple blur methods (Gaussian blur, pixelation, black box)</li>
+                <li>Adjustable blur intensity and detection sensitivity</li>
+                <li>Manual selection option for custom areas</li>
+                <li>Interactive editor for verification and manual selection</li>
+                <li>Batch processing for multiple files</li>
+                <li>100% free with no watermarks</li>
+                <li>Private and secure - all processing happens locally</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/picspanda-logo.svg" alt="PicsPanda Logo">
+                    <span>PicsPanda</span>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html#image-tools">Image Tools</a></li>
+                        <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                        <li><a href="../index.html#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 PicsPanda. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/enhanced-tools.js" data-tool-id="image-face-blur"></script>
+</body>
+</html> 

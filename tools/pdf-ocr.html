@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF OCR - PicsPanda</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/tool-enhancements.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <meta name="description" content="Make scanned PDFs searchable with text recognition using PicsPanda's free online PDF OCR tool.">
+    <meta name="theme-color" content="#4a6cf7">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../images/picspanda-logo.svg" alt="PicsPanda Logo">
+                    <span>PicsPanda</span>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html#image-tools">Image Tools</a></li>
+                    <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="tool-page-header">
+        <div class="container">
+            <div class="tool-page-icon">
+                <i class="fas fa-file-alt"></i>
+            </div>
+            <h1>PDF OCR</h1>
+            <p>Make scanned PDFs searchable with text recognition.</p>
+        </div>
+    </section>
+
+    <section class="tool-interface">
+        <div class="container">
+            <div class="tool-content">
+                <div class="upload-area" id="upload-area">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drop files here or click to upload</h3>
+                    <p>Supported formats: PDF</p>
+                    <input type="file" id="file-input" multiple hidden>
+                    <button class="upload-btn">Choose Files</button>
+                </div>
+                <div class="file-list" id="file-list"></div>
+                <div class="tool-options" id="tool-options">
+                    <div class="option-group">
+                        <label for="language">OCR Language</label>
+                        <select id="language">
+                            <option value="eng" selected>English</option>
+                            <option value="spa">Spanish</option>
+                            <option value="fra">French</option>
+                            <option value="deu">German</option>
+                            <option value="ita">Italian</option>
+                            <option value="por">Portuguese</option>
+                            <option value="rus">Russian</option>
+                            <option value="jpn">Japanese</option>
+                            <option value="kor">Korean</option>
+                            <option value="chi_sim">Chinese (Simplified)</option>
+                            <option value="chi_tra">Chinese (Traditional)</option>
+                            <option value="ara">Arabic</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label for="ocr-mode">OCR Mode</label>
+                        <select id="ocr-mode">
+                            <option value="accurate" selected>Accurate (Slower)</option>
+                            <option value="fast">Fast (Less Accurate)</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label for="output-type">Output Type</label>
+                        <select id="output-type">
+                            <option value="searchable" selected>Searchable PDF (Same Layout)</option>
+                            <option value="editable">Editable PDF (May Change Layout)</option>
+                            <option value="text">Text Only (Extract Text to File)</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label>
+                            <input type="checkbox" id="auto-rotate" checked>
+                            Auto-rotate Pages
+                        </label>
+                    </div>
+                    <div class="option-group">
+                        <label>
+                            <input type="checkbox" id="deskew" checked>
+                            Deskew Pages (Fix Alignment)
+                        </label>
+                    </div>
+                    <div class="option-group">
+                        <label>
+                            <input type="checkbox" id="enhance-image" checked>
+                            Enhance Image Quality
+                        </label>
+                    </div>
+                    <div class="option-group">
+                        <label for="page-range">Page Range (Optional)</label>
+                        <input type="text" id="page-range" placeholder="e.g., 1-5, 8, 11-13">
+                        <p class="note">Leave blank to process all pages</p>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="process-btn" id="process-btn" disabled>Process PDF</button>
+                </div>
+                <div class="results" id="results"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-info">
+        <div class="container">
+            <h2>About PDF OCR</h2>
+            <p>Our PDF OCR (Optical Character Recognition) tool converts scanned PDF documents into searchable, selectable, and editable text. This is perfect for digitizing paper documents, making scanned books searchable, or extracting text from image-based PDFs. All processing happens directly in your browser - your files never leave your computer, ensuring maximum privacy and security.</p>
+            
+            <h3>How to Make PDFs Searchable</h3>
+            <ol>
+                <li>Upload your PDF files by dragging and dropping them or clicking the "Choose Files" button.</li>
+                <li>Select the language that matches the text in your PDFs.</li>
+                <li>Choose the OCR mode based on your accuracy needs.</li>
+                <li>Select your preferred output type.</li>
+                <li>Enable auto-rotate, deskew, and image enhancement options for better results.</li>
+                <li>Specify a page range if you only want to process certain pages.</li>
+                <li>Click the "Process PDF" button to start the OCR.</li>
+                <li>Download your searchable PDF documents.</li>
+            </ol>
+            
+            <h3>Features</h3>
+            <ul>
+                <li>Advanced OCR technology for accurate text recognition</li>
+                <li>Support for 12+ languages</li>
+                <li>Multiple output options (searchable PDF, editable PDF, text only)</li>
+                <li>Automatic page rotation and deskewing</li>
+                <li>Image quality enhancement for better OCR results</li>
+                <li>Selective page processing</li>
+                <li>Batch processing for multiple files</li>
+                <li>100% free with no watermarks</li>
+                <li>Private and secure - no server uploads</li>
+            </ul>
+            
+            <div class="premium-note">
+                <h3>Premium Features - Available for Free!</h3>
+                <p>Most PDF OCR services charge for these premium features, but PicsPanda offers them completely free:</p>
+                <ul>
+                    <li>Multi-language support</li>
+                    <li>Batch processing</li>
+                    <li>High-accuracy OCR mode</li>
+                    <li>Layout preservation</li>
+                    <li>No file size limits</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/picspanda-logo.svg" alt="PicsPanda Logo">
+                    <span>PicsPanda</span>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html#image-tools">Image Tools</a></li>
+                        <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                        <li><a href="../index.html#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 PicsPanda. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/enhanced-tools.js" data-tool-id="pdf-ocr"></script>
+</body>
+</html> 

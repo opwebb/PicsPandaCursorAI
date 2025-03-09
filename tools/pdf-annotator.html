@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Annotator - PicsPanda</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/tool-enhancements.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <meta name="description" content="Add notes, highlights, and drawings to PDF files with PicsPanda's free online PDF Annotator tool.">
+    <meta name="theme-color" content="#4a6cf7">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../images/picspanda-logo.svg" alt="PicsPanda Logo">
+                    <span>PicsPanda</span>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html#image-tools">Image Tools</a></li>
+                    <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="tool-page-header">
+        <div class="container">
+            <div class="tool-page-icon">
+                <i class="fas fa-highlighter"></i>
+            </div>
+            <h1>PDF Annotator</h1>
+            <p>Add notes, highlights, and drawings to PDF files.</p>
+        </div>
+    </section>
+
+    <section class="tool-interface">
+        <div class="container">
+            <div class="tool-content">
+                <div class="upload-area" id="upload-area">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drop files here or click to upload</h3>
+                    <p>Supported formats: PDF</p>
+                    <input type="file" id="file-input" hidden>
+                    <button class="upload-btn">Choose File</button>
+                </div>
+                <div class="file-list" id="file-list"></div>
+                
+                <div class="pdf-editor" id="pdf-editor" style="display: none;">
+                    <div class="editor-toolbar">
+                        <div class="toolbar-group">
+                            <button class="tool-btn" id="text-tool" title="Text Note">
+                                <i class="fas fa-font"></i>
+                            </button>
+                            <button class="tool-btn" id="highlight-tool" title="Highlight Text">
+                                <i class="fas fa-highlighter"></i>
+                            </button>
+                            <button class="tool-btn" id="underline-tool" title="Underline Text">
+                                <i class="fas fa-underline"></i>
+                            </button>
+                            <button class="tool-btn" id="strikethrough-tool" title="Strikethrough Text">
+                                <i class="fas fa-strikethrough"></i>
+                            </button>
+                        </div>
+                        <div class="toolbar-group">
+                            <button class="tool-btn" id="draw-tool" title="Draw">
+                                <i class="fas fa-pen"></i>
+                            </button>
+                            <button class="tool-btn" id="shape-tool" title="Add Shapes">
+                                <i class="fas fa-shapes"></i>
+                            </button>
+                            <button class="tool-btn" id="stamp-tool" title="Add Stamp">
+                                <i class="fas fa-stamp"></i>
+                            </button>
+                        </div>
+                        <div class="toolbar-group">
+                            <button class="tool-btn" id="color-picker" title="Color">
+                                <i class="fas fa-palette"></i>
+                            </button>
+                            <div class="line-width">
+                                <label for="line-width-slider">Width</label>
+                                <input type="range" id="line-width-slider" min="1" max="10" value="2">
+                            </div>
+                        </div>
+                        <div class="toolbar-group">
+                            <button class="tool-btn" id="undo-btn" title="Undo">
+                                <i class="fas fa-undo"></i>
+                            </button>
+                            <button class="tool-btn" id="redo-btn" title="Redo">
+                                <i class="fas fa-redo"></i>
+                            </button>
+                            <button class="tool-btn" id="delete-btn" title="Delete Selected">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="pdf-container">
+                        <div class="pdf-navigation">
+                            <button id="prev-page"><i class="fas fa-chevron-left"></i></button>
+                            <span id="page-info">Page <span id="current-page">1</span> of <span id="total-pages">1</span></span>
+                            <button id="next-page"><i class="fas fa-chevron-right"></i></button>
+                            <select id="zoom-level">
+                                <option value="0.5">50%</option>
+                                <option value="0.75">75%</option>
+                                <option value="1" selected>100%</option>
+                                <option value="1.25">125%</option>
+                                <option value="1.5">150%</option>
+                                <option value="2">200%</option>
+                            </select>
+                        </div>
+                        <div class="pdf-viewer" id="pdf-viewer">
+                            <!-- PDF pages will be rendered here -->
+                            <div class="pdf-placeholder">
+                                <p>PDF preview will appear here</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="process-btn" id="process-btn" disabled>Save Annotated PDF</button>
+                </div>
+                <div class="results" id="results"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-info">
+        <div class="container">
+            <h2>About PDF Annotator</h2>
+            <p>Our PDF Annotator tool allows you to add notes, highlights, underlines, drawings, shapes, and stamps to your PDF documents. This is perfect for reviewing documents, marking up research papers, adding comments to contracts, or preparing study materials. All processing happens directly in your browser - your files never leave your computer, ensuring maximum privacy and security.</p>
+            
+            <h3>How to Annotate PDF Files</h3>
+            <ol>
+                <li>Upload your PDF file by dragging and dropping it or clicking the "Choose File" button.</li>
+                <li>Use the toolbar to select annotation tools:
+                    <ul>
+                        <li>Text Tool: Add text notes anywhere on the document</li>
+                        <li>Highlight Tool: Highlight important text</li>
+                        <li>Underline/Strikethrough: Mark text for emphasis or deletion</li>
+                        <li>Draw Tool: Freehand drawing on the document</li>
+                        <li>Shape Tool: Add rectangles, circles, arrows, and lines</li>
+                        <li>Stamp Tool: Add common stamps like "Approved," "Draft," etc.</li>
+                    </ul>
+                </li>
+                <li>Customize annotations with different colors and line widths.</li>
+                <li>Navigate between pages using the page controls.</li>
+                <li>Use undo/redo buttons to correct mistakes.</li>
+                <li>Click the "Save Annotated PDF" button when finished.</li>
+                <li>Download your annotated PDF document.</li>
+            </ol>
+            
+            <h3>Features</h3>
+            <ul>
+                <li>Comprehensive annotation tools (text, highlights, drawings, shapes)</li>
+                <li>Multiple color options for all annotation types</li>
+                <li>Adjustable line width for drawings and shapes</li>
+                <li>Common stamps for document review</li>
+                <li>Undo/redo functionality</li>
+                <li>Page navigation and zoom controls</li>
+                <li>100% free with no watermarks</li>
+                <li>Private and secure - no server uploads</li>
+            </ul>
+            
+            <div class="premium-note">
+                <h3>Premium Features - Available for Free!</h3>
+                <p>Most PDF annotation services charge for these premium features, but PicsPanda offers them completely free:</p>
+                <ul>
+                    <li>Unlimited annotations</li>
+                    <li>Advanced drawing tools</li>
+                    <li>Custom stamps</li>
+                    <li>High-resolution output</li>
+                    <li>No file size limits</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/picspanda-logo.svg" alt="PicsPanda Logo">
+                    <span>PicsPanda</span>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html#image-tools">Image Tools</a></li>
+                        <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                        <li><a href="../index.html#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 PicsPanda. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/enhanced-tools.js" data-tool-id="pdf-annotator"></script>
+</body>
+</html> 

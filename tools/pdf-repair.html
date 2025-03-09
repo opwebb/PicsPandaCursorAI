@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Repair - PicsPanda</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/tool-enhancements.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <meta name="description" content="Fix corrupted or damaged PDF files with PicsPanda's free online PDF Repair tool.">
+    <meta name="theme-color" content="#4a6cf7">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../images/picspanda-logo.svg" alt="PicsPanda Logo">
+                    <span>PicsPanda</span>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html#image-tools">Image Tools</a></li>
+                    <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="tool-page-header">
+        <div class="container">
+            <div class="tool-page-icon">
+                <i class="fas fa-wrench"></i>
+            </div>
+            <h1>PDF Repair</h1>
+            <p>Fix corrupted or damaged PDF files with advanced recovery options.</p>
+        </div>
+    </section>
+
+    <section class="tool-interface">
+        <div class="container">
+            <div class="tool-content">
+                <div class="upload-area" id="upload-area">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drop files here or click to upload</h3>
+                    <p>Supported formats: PDF (even corrupted ones)</p>
+                    <input type="file" id="file-input" multiple hidden>
+                    <button class="upload-btn">Choose Files</button>
+                </div>
+                <div class="file-list" id="file-list"></div>
+                <div class="tool-options" id="tool-options">
+                    <div class="option-group">
+                        <label for="repair-level">Repair Level</label>
+                        <select id="repair-level">
+                            <option value="auto" selected>Automatic (Recommended)</option>
+                            <option value="basic">Basic (Quick Fix)</option>
+                            <option value="deep">Deep Recovery (Thorough)</option>
+                            <option value="extreme">Extreme Recovery (For Severely Damaged Files)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label for="recovery-mode">Recovery Mode</label>
+                        <select id="recovery-mode">
+                            <option value="structure" selected>Structure Recovery</option>
+                            <option value="content">Content Recovery</option>
+                            <option value="both">Structure & Content</option>
+                        </select>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label for="rebuild-images">
+                            <input type="checkbox" id="rebuild-images" checked>
+                            Attempt to Recover Images
+                        </label>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label for="fix-fonts">
+                            <input type="checkbox" id="fix-fonts" checked>
+                            Fix Font Issues
+                        </label>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label for="fix-links">
+                            <input type="checkbox" id="fix-links" checked>
+                            Repair Broken Links & Bookmarks
+                        </label>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label for="optimize-output">
+                            <input type="checkbox" id="optimize-output" checked>
+                            Optimize Repaired PDF
+                        </label>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label for="keep-original">
+                            <input type="checkbox" id="keep-original" checked>
+                            Include Original Metadata When Possible
+                        </label>
+                    </div>
+                    
+                    <div class="advanced-options">
+                        <div class="advanced-toggle">
+                            <span>Advanced Options</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        
+                        <div class="advanced-content" style="display: none;">
+                            <div class="option-group">
+                                <label for="recovery-timeout">Recovery Timeout (seconds)</label>
+                                <input type="number" id="recovery-timeout" min="30" max="600" value="120">
+                                <p class="note">Longer timeout allows for more recovery attempts</p>
+                            </div>
+                            
+                            <div class="option-group">
+                                <label for="alternative-method">
+                                    <input type="checkbox" id="alternative-method">
+                                    Try Alternative Method If Primary Fails
+                                </label>
+                            </div>
+                            
+                            <div class="option-group">
+                                <label for="partial-recovery">
+                                    <input type="checkbox" id="partial-recovery" checked>
+                                    Allow Partial Recovery
+                                </label>
+                                <p class="note">Recover as much content as possible even if some parts are unrecoverable</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="process-btn" id="process-btn" disabled>Repair PDF</button>
+                </div>
+                <div class="results" id="results"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-info">
+        <div class="container">
+            <h2>About PDF Repair</h2>
+            <p>Our PDF Repair tool helps you fix corrupted or damaged PDF files that won't open or display properly. It analyzes the file structure, attempts to recover the content, and creates a new readable PDF. This is useful for recovering important documents, presentations, or reports that have become corrupted. All processing happens directly in your browser - your files never leave your computer, ensuring maximum privacy and security.</p>
+            
+            <h3>How to Repair PDF Files</h3>
+            <ol>
+                <li>Upload your corrupted PDF files by dragging and dropping them or clicking the "Choose Files" button.</li>
+                <li>Select the repair level based on how badly damaged your PDF is.</li>
+                <li>Choose the recovery mode to focus on structure, content, or both.</li>
+                <li>Adjust additional options like image recovery and font fixing.</li>
+                <li>For severely damaged files, check the advanced options.</li>
+                <li>Click the "Repair PDF" button to process your files.</li>
+                <li>Download your repaired PDF documents.</li>
+            </ol>
+            
+            <h3>Features</h3>
+            <ul>
+                <li>Fix corrupted PDF files with intelligent recovery algorithms</li>
+                <li>Multiple repair levels for different types of damage</li>
+                <li>Recovery of PDF structure, text content, and embedded images</li>
+                <li>Font and link repair capabilities</li>
+                <li>Advanced options for severely damaged files</li>
+                <li>File analysis report showing what was recovered</li>
+                <li>Batch processing for multiple files</li>
+                <li>100% free with no file size limits</li>
+                <li>Private and secure - all processing happens locally</li>
+            </ul>
+            
+            <h3>Common PDF Problems This Tool Can Fix</h3>
+            <ul>
+                <li>"Cannot open file" or "File is damaged" errors</li>
+                <li>PDFs that crash when opening</li>
+                <li>Missing or garbled text</li>
+                <li>Pages displaying incorrectly</li>
+                <li>Missing images or broken graphics</li>
+                <li>Corrupted bookmarks or links</li>
+                <li>Problems with form fields</li>
+                <li>PDF files cut off or partially viewable</li>
+                <li>File corruption from interrupted transfers or downloads</li>
+            </ul>
+            
+            <p class="note"><strong>Note:</strong> While our PDF Repair tool is powerful, not all damaged PDF files can be fully recovered. The success rate depends on the extent of the damage. In some cases, only partial recovery might be possible.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/picspanda-logo.svg" alt="PicsPanda Logo">
+                    <span>PicsPanda</span>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html#image-tools">Image Tools</a></li>
+                        <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                        <li><a href="../index.html#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 PicsPanda. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/enhanced-tools.js" data-tool-id="pdf-repair"></script>
+</body>
+</html> 

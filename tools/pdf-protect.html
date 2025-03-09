@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Protect - PicsPanda</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/tool-enhancements.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <meta name="description" content="Add password protection to PDF files with PicsPanda's free online PDF Protect tool.">
+    <meta name="theme-color" content="#4a6cf7">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../images/picspanda-logo.svg" alt="PicsPanda Logo">
+                    <span>PicsPanda</span>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html#image-tools">Image Tools</a></li>
+                    <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="tool-page-header">
+        <div class="container">
+            <div class="tool-page-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h1>PDF Protect</h1>
+            <p>Add password protection to PDF files.</p>
+        </div>
+    </section>
+
+    <section class="tool-interface">
+        <div class="container">
+            <div class="tool-content">
+                <div class="upload-area" id="upload-area">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drop files here or click to upload</h3>
+                    <p>Supported formats: PDF</p>
+                    <input type="file" id="file-input" multiple hidden>
+                    <button class="upload-btn">Choose Files</button>
+                </div>
+                <div class="file-list" id="file-list"></div>
+                <div class="tool-options" id="tool-options">
+                    <div class="option-group">
+                        <label for="protection-type">Protection Type</label>
+                        <select id="protection-type">
+                            <option value="open">User Password (Required to Open)</option>
+                            <option value="permissions">Owner Password (Restrict Permissions)</option>
+                            <option value="both">Both Passwords</option>
+                        </select>
+                    </div>
+                    <div class="option-group" id="user-password-group">
+                        <label for="user-password">User Password</label>
+                        <input type="password" id="user-password" placeholder="Enter password to open document">
+                        <div class="password-toggle">
+                            <input type="checkbox" id="show-user-password">
+                            <label for="show-user-password">Show password</label>
+                        </div>
+                    </div>
+                    <div class="option-group" id="owner-password-group" style="display: none;">
+                        <label for="owner-password">Owner Password</label>
+                        <input type="password" id="owner-password" placeholder="Enter password for permissions">
+                        <div class="password-toggle">
+                            <input type="checkbox" id="show-owner-password">
+                            <label for="show-owner-password">Show password</label>
+                        </div>
+                    </div>
+                    <div class="option-group" id="permissions-group" style="display: none;">
+                        <label>Permissions</label>
+                        <div class="permissions-options">
+                            <div class="permission-option">
+                                <input type="checkbox" id="allow-printing" checked>
+                                <label for="allow-printing">Allow Printing</label>
+                            </div>
+                            <div class="permission-option">
+                                <input type="checkbox" id="allow-copying" checked>
+                                <label for="allow-copying">Allow Copying Text</label>
+                            </div>
+                            <div class="permission-option">
+                                <input type="checkbox" id="allow-editing" checked>
+                                <label for="allow-editing">Allow Editing</label>
+                            </div>
+                            <div class="permission-option">
+                                <input type="checkbox" id="allow-annotations" checked>
+                                <label for="allow-annotations">Allow Annotations</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="option-group">
+                        <label for="output-filename">Output Filename</label>
+                        <input type="text" id="output-filename" value="protected_document.pdf">
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="process-btn" id="process-btn" disabled>Protect PDF</button>
+                </div>
+                <div class="results" id="results"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-info">
+        <div class="container">
+            <h2>About PDF Protect</h2>
+            <p>Our PDF Protect tool allows you to add password protection to your PDF documents. You can set a user password that's required to open the document, an owner password that restricts permissions, or both. This is useful for securing sensitive documents, protecting intellectual property, or controlling who can edit or print your PDFs. All processing happens directly in your browser - your files never leave your computer, ensuring maximum privacy and security.</p>
+            
+            <h3>How to Protect PDF Files</h3>
+            <ol>
+                <li>Upload your PDF files by dragging and dropping them or clicking the "Choose Files" button.</li>
+                <li>Select the protection type (user password, owner password, or both).</li>
+                <li>Enter the password(s) you want to use.</li>
+                <li>For owner password protection, select which permissions to allow.</li>
+                <li>Customize the output filename if needed.</li>
+                <li>Click the "Protect PDF" button to process your files.</li>
+                <li>Download your password-protected PDF documents.</li>
+            </ol>
+            
+            <h3>Features</h3>
+            <ul>
+                <li>Add user password to restrict who can open the document</li>
+                <li>Add owner password to control permissions</li>
+                <li>Restrict printing, copying, editing, and annotations</li>
+                <li>Batch processing for multiple files</li>
+                <li>Strong encryption for maximum security</li>
+                <li>100% free with no watermarks</li>
+                <li>Private and secure - no server uploads</li>
+            </ul>
+            
+            <div class="security-note">
+                <h3>Security Note</h3>
+                <p>All password protection is performed directly in your browser. Your passwords and documents are never sent to our servers, ensuring maximum privacy and security. However, please note that PDF password protection has limitations and can be broken by specialized software. For highly sensitive documents, consider using additional security measures.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/picspanda-logo.svg" alt="PicsPanda Logo">
+                    <span>PicsPanda</span>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html#image-tools">Image Tools</a></li>
+                        <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                        <li><a href="../index.html#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 PicsPanda. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/enhanced-tools.js" data-tool-id="pdf-protect"></script>
+</body>
+</html> 

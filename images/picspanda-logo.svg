@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="90" fill="#4a6cf7" />
+  
+  <!-- Panda Face -->
+  <circle cx="100" cy="100" r="70" fill="white" />
+  
+  <!-- Panda Ears -->
+  <circle cx="50" cy="50" r="25" fill="#212529" />
+  <circle cx="150" cy="50" r="25" fill="#212529" />
+  
+  <!-- Panda Eyes -->
+  <ellipse cx="75" cy="90" rx="15" ry="20" fill="#212529" />
+  <ellipse cx="125" cy="90" rx="15" ry="20" fill="#212529" />
+  
+  <!-- Eye Highlights -->
+  <circle cx="70" cy="85" r="5" fill="white" />
+  <circle cx="120" cy="85" r="5" fill="white" />
+  
+  <!-- Panda Nose -->
+  <ellipse cx="100" cy="110" rx="10" ry="7" fill="#212529" />
+  
+  <!-- Panda Mouth -->
+  <path d="M90,120 Q100,130 110,120" stroke="#212529" stroke-width="3" fill="none" />
+  
+  <!-- Camera Lens (for image processing theme) -->
+  <circle cx="140" cy="140" r="25" fill="#ff6b6b" stroke="#212529" stroke-width="3" />
+  <circle cx="140" cy="140" r="18" fill="#212529" />
+  <circle cx="140" cy="140" r="10" fill="#ff6b6b" />
+  <circle cx="135" cy="135" r="3" fill="white" />
+</svg> 

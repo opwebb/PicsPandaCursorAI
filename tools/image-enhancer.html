@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Enhancer - PicsPanda</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/tool-enhancements.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <meta name="description" content="Improve image quality with AI upscaling using PicsPanda's free online Image Enhancer tool.">
+    <meta name="theme-color" content="#4a6cf7">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../images/picspanda-logo.svg" alt="PicsPanda Logo">
+                    <span>PicsPanda</span>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html#image-tools">Image Tools</a></li>
+                    <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="tool-page-header">
+        <div class="container">
+            <div class="tool-page-icon">
+                <i class="fas fa-magic"></i>
+            </div>
+            <h1>Image Enhancer</h1>
+            <p>Improve image quality with AI upscaling.</p>
+        </div>
+    </section>
+
+    <section class="tool-interface">
+        <div class="container">
+            <div class="tool-content">
+                <div class="upload-area" id="upload-area">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drop files here or click to upload</h3>
+                    <p>Supported formats: JPG, PNG, WEBP</p>
+                    <input type="file" id="file-input" multiple hidden>
+                    <button class="upload-btn">Choose Files</button>
+                </div>
+                <div class="file-list" id="file-list"></div>
+                <div class="tool-options" id="tool-options">
+                    <div class="option-group">
+                        <label for="enhancement-type">Enhancement Type</label>
+                        <select id="enhancement-type">
+                            <option value="upscale" selected>AI Upscaling (2x-4x)</option>
+                            <option value="denoise">Noise Reduction</option>
+                            <option value="sharpen">Sharpening</option>
+                            <option value="hdr">HDR Effect</option>
+                            <option value="colorize">Colorize (B&W to Color)</option>
+                            <option value="all">Complete Enhancement</option>
+                        </select>
+                    </div>
+                    <div class="option-group" id="upscale-options">
+                        <label for="upscale-factor">Upscale Factor</label>
+                        <select id="upscale-factor">
+                            <option value="2">2x (Good for most images)</option>
+                            <option value="3">3x (Higher quality)</option>
+                            <option value="4">4x (Maximum quality)</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label for="ai-model">AI Model</label>
+                        <select id="ai-model">
+                            <option value="standard" selected>Standard (Fast)</option>
+                            <option value="photo">Photo-Realistic (Detailed)</option>
+                            <option value="art">Artistic (Creative)</option>
+                            <option value="anime">Anime/Cartoon</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label for="output-format">Output Format</label>
+                        <select id="output-format">
+                            <option value="jpg">JPG</option>
+                            <option value="png" selected>PNG</option>
+                            <option value="webp">WEBP</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label for="quality-slider">Output Quality</label>
+                        <input type="range" id="quality-slider" min="1" max="100" value="90">
+                        <span id="quality-value">90</span>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="process-btn" id="process-btn" disabled>Enhance Images</button>
+                </div>
+                <div class="results" id="results"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-info">
+        <div class="container">
+            <h2>About Image Enhancer</h2>
+            <p>Our Image Enhancer tool uses advanced AI algorithms to improve the quality of your images. Whether you need to upscale low-resolution photos, reduce noise, sharpen details, or add HDR effects, our tool can help you achieve professional-looking results. All processing happens directly in your browser - your files never leave your computer, ensuring maximum privacy and security.</p>
+            
+            <h3>How to Enhance Images</h3>
+            <ol>
+                <li>Upload your image files by dragging and dropping them or clicking the "Choose Files" button.</li>
+                <li>Select the enhancement type that best suits your needs.</li>
+                <li>For upscaling, choose the desired upscale factor.</li>
+                <li>Select the AI model that works best for your image content.</li>
+                <li>Choose your preferred output format and quality.</li>
+                <li>Click the "Enhance Images" button to process your files.</li>
+                <li>Download your enhanced images individually or as a ZIP archive.</li>
+            </ol>
+            
+            <h3>Features</h3>
+            <ul>
+                <li>AI-powered image upscaling (2x, 3x, 4x)</li>
+                <li>Intelligent noise reduction</li>
+                <li>Smart sharpening for clearer details</li>
+                <li>HDR effect enhancement</li>
+                <li>Black and white image colorization</li>
+                <li>Multiple specialized AI models</li>
+                <li>Batch processing for multiple files</li>
+                <li>100% free with no watermarks</li>
+                <li>Private and secure - no server uploads</li>
+            </ul>
+            
+            <div class="premium-note">
+                <h3>Premium Features - Available for Free!</h3>
+                <p>Most image enhancement services charge for these premium features, but PicsPanda offers them completely free:</p>
+                <ul>
+                    <li>4x AI upscaling</li>
+                    <li>Specialized AI models</li>
+                    <li>Batch processing</li>
+                    <li>Black and white photo colorization</li>
+                    <li>No file size limits</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/picspanda-logo.svg" alt="PicsPanda Logo">
+                    <span>PicsPanda</span>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html#image-tools">Image Tools</a></li>
+                        <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                        <li><a href="../index.html#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 PicsPanda. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/enhanced-tools.js" data-tool-id="image-enhancer"></script>
+</body>
+</html> 
