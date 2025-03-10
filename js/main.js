@@ -9,9 +9,35 @@ document.addEventListener('DOMContentLoaded', function() {
     const nav = document.querySelector('nav');
     
     if (mobileMenuBtn && nav) {
+        // Add ARIA attributes
+        mobileMenuBtn.setAttribute('aria-label', 'Toggle menu');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        
         mobileMenuBtn.addEventListener('click', function() {
             nav.classList.toggle('active');
             mobileMenuBtn.classList.toggle('active');
+            
+            // Update ARIA expanded state
+            const isExpanded = nav.classList.contains('active');
+            mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!nav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                nav.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+        
+        // Close menu when clicking a link
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                nav.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            });
         });
     }
 
@@ -77,4 +103,67 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-}); 
+
+    // Search functionality
+    const searchInput = document.getElementById('tool-search');
+    const searchBtn = document.getElementById('search-btn');
+    const toolCards = document.querySelectorAll('.tool-card');
+
+    function searchTools(searchTerm) {
+        searchTerm = searchTerm.toLowerCase().trim();
+        
+        toolCards.forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const description = card.querySelector('p').textContent.toLowerCase();
+            const isMatch = title.includes(searchTerm) || description.includes(searchTerm);
+            
+            card.style.display = isMatch || searchTerm === '' ? 'block' : 'none';
+            
+            // Add fade effect
+            if (isMatch || searchTerm === '') {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            } else {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(10px)';
+            }
+        });
+
+        // Update sections visibility
+        const imageTools = document.getElementById('image-tools');
+        const pdfTools = document.getElementById('pdf-tools');
+
+        [imageTools, pdfTools].forEach(section => {
+            if (section) {
+                const hasVisibleTools = Array.from(section.querySelectorAll('.tool-card'))
+                    .some(card => card.style.display !== 'none');
+                section.style.display = hasVisibleTools ? 'block' : 'none';
+            }
+        });
+    }
+
+    // Search on input
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            searchTools(e.target.value);
+        });
+
+        // Clear search on 'Escape' key
+        searchInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Escape') {
+                searchInput.value = '';
+                searchTools('');
+                searchInput.blur();
+            }
+        });
+    }
+
+    // Search button click
+    if (searchBtn) {
+        searchBtn.addEventListener('click', () => {
+            if (searchInput) {
+                searchTools(searchInput.value);
+            }
+        });
+    }
+});

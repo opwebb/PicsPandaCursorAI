@@ -1467,4 +1467,119 @@ input[type="checkbox"]:hover {
         padding: 6px 12px;
         font-size: 0.8rem;
     }
-} 
+}
+
+@media (max-width: 992px) {
+    .tool-content {
+        padding: 15px;
+    }
+
+    .upload-area {
+        padding: 25px;
+    }
+
+    .preview-container {
+        margin: 15px 0;
+    }
+
+    .preview-comparison {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .preview-original, .preview-processed {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .tool-page-header {
+        padding: 30px 0;
+    }
+
+    .tool-page-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .tool-page-header h1 {
+        font-size: 24px;
+    }
+
+    .tool-page-header p {
+        font-size: 14px;
+    }
+
+    .tool-content {
+        padding: 10px;
+    }
+
+    .upload-area {
+        padding: 20px;
+    }
+
+    .option-group {
+        margin-bottom: 15px;
+    }
+
+    .file-item {
+        flex-direction: column;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .file-thumbnail {
+        margin: 0 auto 10px;
+    }
+
+    .file-info {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .file-remove {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .tool-page-header {
+        padding: 20px 0;
+    }
+
+    .tool-page-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .tool-page-header h1 {
+        font-size: 20px;
+    }
+
+    .upload-area {
+        padding: 15px;
+    }
+
+    .upload-area i {
+        font-size: 32px;
+    }
+
+    .result-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .download-btn, .preview-btn {
+        width: 100%;
+    }
+
+    .notification {
+        min-width: auto;
+        width: calc(100% - 40px);
+    }
+}
