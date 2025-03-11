@@ -1121,4 +1121,206 @@ function formatFileSize(bytes) {
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-} 
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const uploadArea = document.getElementById('upload-area');
+    const fileInput = document.getElementById('file-input');
+    const fileList = document.getElementById('file-list');
+    const processBtn = document.getElementById('process-btn');
+    const results = document.getElementById('results');
+    const uploadBtn = document.querySelector('.upload-btn');
+    const maintainFormat = document.getElementById('maintain-format');
+
+    // Supported image formats
+    const supportedFormats = [
+        'image/jpeg', 'image/jpg', 'image/png', 
+        'image/webp', 'image/gif', 'image/bmp'
+    ];
+
+    // Handle file selection
+    // ...existing code for file handling...
+
+    async function compressImage(file, options) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    try {
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+
+                        // Calculate new dimensions while maintaining aspect ratio
+                        let width = img.width;
+                        let height = img.height;
+                        
+                        // Set canvas dimensions
+                        canvas.width = width;
+                        canvas.height = height;
+
+                        // Draw image on canvas
+                        ctx.drawImage(img, 0, 0, width, height);
+
+                        // Determine output format
+                        let outputFormat = 'image/jpeg';
+                        let mimeType = file.type;
+
+                        if (options.maintainFormat) {
+                            // Keep original format if supported
+                            if (supportedFormats.includes(mimeType)) {
+                                outputFormat = mimeType;
+                            }
+                        }
+
+                        // Convert to data URL with compression
+                        let quality = options.quality / 100;
+                        let dataUrl;
+
+                        // Handle PNG separately to maintain transparency
+                        if (outputFormat === 'image/png') {
+                            dataUrl = canvas.toDataURL(outputFormat);
+                        } else {
+                            dataUrl = canvas.toDataURL(outputFormat, quality);
+                        }
+
+                        // Convert data URL to Blob
+                        const byteString = atob(dataUrl.split(',')[1]);
+                        const mimeString = dataUrl.split(',')[0].split(':')[1].split(';')[0];
+                        const ab = new ArrayBuffer(byteString.length);
+                        const ia = new Uint8Array(ab);
+                        for (let i = 0; i < byteString.length; i++) {
+                            ia[i] = byteString.charCodeAt(i);
+                        }
+                        const blob = new Blob([ab], { type: mimeString });
+
+                        // Get file extension from mime type
+                        const ext = mimeString.split('/')[1];
+                        const fileName = `compressed_${file.name.split('.')[0]}.${ext}`;
+
+                        // Create File object
+                        const compressedFile = new File([blob], fileName, {
+                            type: mimeString
+                        });
+
+                        resolve({
+                            file: compressedFile,
+                            originalSize: file.size,
+                            compressedSize: blob.size,
+                            format: ext.toUpperCase(),
+                            dataUrl: dataUrl
+                        });
+
+                    } catch (error) {
+                        reject(error);
+                    }
+                };
+                img.onerror = reject;
+                img.src = e.target.result;
+            };
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+        });
+    }
+
+    processBtn.addEventListener('click', async () => {
+        if (!fileInput.files.length) return;
+
+        try {
+            processBtn.disabled = true;
+            processBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Compressing...';
+
+            const compressionOptions = {
+                quality: document.getElementById('quality').value,
+                maintainFormat: document.getElementById('maintain-format').checked
+            };
+
+            const compressedImages = [];
+            for (let file of fileInput.files) {
+                const result = await compressImage(file, compressionOptions);
+                compressedImages.push(result);
+            }
+
+            displayResults(compressedImages);
+        } catch (error) {
+            showError('Error compressing image: ' + error.message);
+        } finally {
+            processBtn.disabled = false;
+            processBtn.innerHTML = 'Compress Images';
+        }
+    });
+
+    function displayResults(results) {
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = '';
+
+        results.forEach((result, index) => {
+            const savings = ((result.originalSize - result.compressedSize) / result.originalSize * 100).toFixed(2);
+            
+            const resultItem = document.createElement('div');
+            resultItem.className = 'result-item';
+            resultItem.innerHTML = `
+                <div class="result-info">
+                    <img src="${result.dataUrl}" alt="Compressed image" style="max-width: 100px;">
+                    <div>
+                        <div class="result-name">${result.file.name}</div>
+                        <div class="result-meta">
+                            Format: ${result.format}<br>
+                            Original: ${formatFileSize(result.originalSize)}<br>
+                            Compressed: ${formatFileSize(result.compressedSize)}<br>
+                            Savings: ${savings}%
+                        </div>
+                    </div>
+                </div>
+                <div class="result-actions">
+                    <button class="preview-btn" onclick="previewImage('${result.dataUrl}', ${index})">
+                        <i class="fas fa-eye"></i> Preview
+                    </button>
+                    <button class="download-btn" onclick="downloadImage('${result.dataUrl}', '${result.file.name}')">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+            `;
+            resultsDiv.appendChild(resultItem);
+        });
+    }
+
+    // Helper functions for file size formatting and error handling
+    function formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    window.previewImage = function(dataUrl, index) {
+        const modal = document.createElement('div');
+        modal.className = 'preview-modal';
+        modal.innerHTML = `
+            <div class="preview-content">
+                <div class="preview-header">
+                    <h3>Image Preview</h3>
+                    <button onclick="this.parentElement.parentElement.parentElement.remove()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="preview-body">
+                    <img src="${dataUrl}" alt="Preview">
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) modal.remove();
+        });
+    };
+
+    window.downloadImage = function(dataUrl, fileName) {
+        const link = document.createElement('a');
+        link.href = dataUrl;
+        link.download = fileName;
+        link.click();
+    };
+});
