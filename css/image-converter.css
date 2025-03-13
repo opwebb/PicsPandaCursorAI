@@ -479,6 +479,46 @@
     animation: highlight 2s ease-out;
 }
 
+/* Tool Info Section Styles */
+.tool-info {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color); /* Add this line for the bottom border */
+    margin-bottom: -1px; /* This prevents double borders with footer */
+}
+
+.tool-info h2 {
+    color: var(--text-primary);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.tool-info h3 {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    margin: 30px 0 15px;
+}
+
+.tool-info p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.tool-info ul,
+.tool-info ol {
+    color: var(--text-secondary);
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.tool-info li {
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    line-height: 1.7;
+}
+
 /* Responsive styles */
 @media (max-width: 1200px) {
     .results-container {
@@ -706,4 +746,4 @@
         width: 100%;
         flex-basis: auto;
     }
-} 
+}

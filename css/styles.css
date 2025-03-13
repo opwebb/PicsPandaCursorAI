@@ -42,6 +42,9 @@
     --footer-bg: #1a1a1a;
     --shadow-color: rgba(0, 0, 0, 0.3);
     --section-title-color: #ffffff;
+    --tool-interface-bg: var(--bg-primary);
+    --tool-option-bg: var(--bg-secondary);
+    --file-item-bg: var(--bg-secondary);
 }
 
 body {
@@ -391,7 +394,7 @@ nav.active ul li a {
 
 /* Tool Interface */
 .tool-interface {
-    background-color: white;
+    background-color: var(--bg-primary);
     padding: 60px 0;
     margin-top: 20px;
     border-radius: var(--border-radius);
@@ -469,9 +472,10 @@ nav.active ul li a {
     align-items: center;
     justify-content: space-between;
     padding: 15px;
-    background-color: #f8f9fa;
+    background-color: var(--bg-secondary);
     border-radius: var(--border-radius);
     margin-bottom: 10px;
+    border: 1px solid var(--border-color);
 }
 
 .file-info {
@@ -507,10 +511,11 @@ nav.active ul li a {
 }
 
 .tool-options {
-    background-color: #f8f9fa;
+    background-color: var(--bg-secondary);
     padding: 20px;
     border-radius: var(--border-radius);
     margin-bottom: 30px;
+    border: 1px solid var(--border-color);
 }
 
 .option-group {
@@ -531,9 +536,11 @@ nav.active ul li a {
 .option-group input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     font-size: 1rem;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
 }
 
 .action-buttons {
@@ -1147,33 +1154,39 @@ copyright p {
 
 .tool-info {
     padding: 60px 0;
-    background-color: #f8f9fa;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
 }
 
 .tool-info h2 {
     font-size: 2rem;
+    color: var(--text-primary);
     margin-bottom: 20px;
 }
 
 .tool-info h3 {
     font-size: 1.5rem;
+    color: var(--text-primary);
     margin: 30px 0 15px;
 }
 
 .tool-info p {
     margin-bottom: 20px;
     line-height: 1.7;
+    color: var(--text-secondary);
 }
 
 .tool-info ul, 
 .tool-info ol {
     margin-left: 20px;
     margin-bottom: 20px;
+    color: var(--text-secondary);
 }
 
 .tool-info li {
     margin-bottom: 10px;
     line-height: 1.7;
+    color: var(--text-secondary);
 }
 
 /* Legal Pages Styles */
