@@ -26,7 +26,7 @@
 .file-item {
     display: flex;
     align-items: center;
-    background: white;
+    background: var(--bg-primary);
     border-radius: 8px;
     margin-bottom: 10px;
     padding: 12px 15px;
@@ -34,6 +34,8 @@
     transition: all 0.2s ease;
     cursor: pointer;
     border-left: 3px solid transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
 }
 
 .file-item:hover {
@@ -55,13 +57,13 @@
 .file-name {
     font-weight: 500;
     margin-bottom: 3px;
-    color: #333;
+    color: var(--text-primary);
     word-break: break-all;
 }
 
 .file-meta {
     font-size: 13px;
-    color: #6c757d;
+    color: var(--text-secondary);
 }
 
 .file-remove {
@@ -81,11 +83,12 @@
 
 /* Preview container styling */
 .preview-container {
-    background-color: #f8f9fa;
+    background-color: var(--bg-primary);
     border-radius: 10px;
     padding: 20px;
     margin: 20px 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
 }
 
 .preview-container h3 {
@@ -105,17 +108,18 @@
 .preview-original, .preview-processed {
     flex: 1;
     min-width: 300px;
-    background: #fff;
+    background: var(--bg-primary);
     border-radius: 8px;
     padding: 10px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
 }
 
 .preview-original h4, .preview-processed h4 {
     font-size: 16px;
     margin-top: 0;
     margin-bottom: 10px;
-    color: #555;
+    color: var(--text-primary);
     text-align: center;
 }
 
@@ -182,11 +186,11 @@
 }
 
 .result-item {
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     overflow: visible;
     transition: all 0.3s ease;
-    background-color: #fff;
+    background-color: var(--bg-primary);
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
     position: relative;
     z-index: 1;
@@ -206,8 +210,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f5f5f5;
-    border-bottom: 1px solid #eee;
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .result-thumbnail img {
@@ -230,12 +234,12 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: #333;
+    color: var(--text-primary);
 }
 
 .result-meta {
     font-size: 13px;
-    color: #666;
+    color: var(--text-secondary);
     margin-bottom: 15px;
     line-height: 1.5;
 }
@@ -349,13 +353,14 @@
 }
 
 .preview-modal-content {
-    background-color: white;
+    background-color: var(--bg-primary);
     border-radius: 10px;
     max-width: 90%;
     max-height: 90%;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    border: 1px solid var(--border-color);
 }
 
 .preview-modal-header {
@@ -363,20 +368,20 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .preview-modal-header h3 {
     margin: 0;
     font-size: 18px;
-    color: #333;
+    color: var(--text-primary);
 }
 
 .preview-modal-close {
     background: none;
     border: none;
     font-size: 24px;
-    color: #6c757d;
+    color: var(--text-secondary);
     cursor: pointer;
     transition: color 0.2s ease;
 }
@@ -401,13 +406,14 @@
 
 /* Error message styling */
 .error-message {
-    background-color: #fff5f5;
+    background-color: var(--bg-primary);
     border-left: 4px solid #e74c3c;
     border-radius: 5px;
     padding: 15px;
     margin-bottom: 15px;
     display: flex;
     align-items: center;
+    border: 1px solid var(--border-color);
 }
 
 .error-message i {
@@ -418,7 +424,7 @@
 
 .error-message p {
     margin: 0;
-    color: #333;
+    color: var(--text-primary);
 }
 
 /* Loading indicator */
@@ -484,8 +490,17 @@
     background-color: var(--bg-primary);
     color: var(--text-primary);
     border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color); /* Add this line for the bottom border */
-    margin-bottom: -1px; /* This prevents double borders with footer */
+    position: relative;
+}
+
+.tool-info::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: var(--border-color);
 }
 
 .tool-info h2 {
