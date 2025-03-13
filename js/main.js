@@ -166,4 +166,45 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Theme Toggle Functionality
+    const themeToggleBtn = document.getElementById('theme-toggle-btn');
+    if (themeToggleBtn) {
+        const htmlElement = document.documentElement;
+        const currentTheme = localStorage.getItem('theme');
+
+        // Set initial theme
+        if (currentTheme) {
+            htmlElement.setAttribute('data-theme', currentTheme);
+            updateThemeIcon(currentTheme);
+        } else {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const initialTheme = prefersDark ? 'dark' : 'light';
+            htmlElement.setAttribute('data-theme', initialTheme);
+            localStorage.setItem('theme', initialTheme);
+            updateThemeIcon(initialTheme);
+        }
+
+        // Toggle theme
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+    }
+
+    // Update theme icon
+    function updateThemeIcon(theme) {
+        const icon = document.querySelector('#theme-toggle-btn i');
+        if (icon) {
+            if (theme === 'dark') {
+                icon.className = 'fas fa-moon';
+            } else {
+                icon.className = 'fas fa-sun';
+            }
+        }
+    }
 });
