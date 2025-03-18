@@ -1,17 +1,14 @@
 const CACHE_NAME = 'picspanda-v1';
 const urlsToCache = [
-  './',
-  './index.html',
-  './css/styles.css',
-  './js/main.js',
-  './images/picspanda-logo.svg',
-  './manifest.json',
-  './offline.html',
-  './css/install-prompt.css',
-  './js/pwa.js',
-  './js/theme-toggle.js',
-  './images/icons/icon-192x192.png',
-  './images/icons/icon-512x512.png'
+  'index.html',
+  'css/styles.css',
+  'js/main.js',
+  'images/picspanda-logo.svg',
+  'manifest.json',
+  'offline.html',
+  'css/install-prompt.css',
+  'js/pwa.js',
+  'js/theme-toggle.js'
 ];
 
 self.addEventListener('install', event => {
@@ -25,18 +22,14 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
-        // Return cached response if found
         if (response) {
           return response;
         }
-        // Otherwise try to fetch from network
         return fetch(event.request)
           .then(response => {
-            // Check if valid response
-            if (!response || response.status !== 200 || response.type !== 'basic') {
+            if (!response || response.status !== 200) {
               return response;
             }
-            // Clone and cache response
             const responseToCache = response.clone();
             caches.open(CACHE_NAME)
               .then(cache => {
@@ -45,9 +38,8 @@ self.addEventListener('fetch', event => {
             return response;
           })
           .catch(() => {
-            // If offline, return offline page for navigation requests
             if (event.request.mode === 'navigate') {
-              return caches.match('./offline.html');
+              return caches.match('offline.html');
             }
           });
       })
