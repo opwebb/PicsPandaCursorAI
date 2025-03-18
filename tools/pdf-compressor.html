@@ -5,13 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF Compressor - PicsPanda</title>
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/tool-enhancements.css">
+    <link rel="stylesheet" href="../css/tool-enhancements.css" media="print" onload="this.media='all'">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
     <meta name="description" content="Reduce PDF file size while preserving quality with PicsPanda's free online PDF Compressor tool.">
     <meta name="theme-color" content="#4a6cf7">
+
+    <!-- Preload critical assets -->
+    <link rel="preload" href="../css/styles.css" as="style">
+    <link rel="preload" href="../js/main.js" as="script">
+    <link rel="preload" href="../js/pdf-compressor.js" as="script">
+    <link rel="preload" href="../images/picspanda-logo.svg" as="image">
+    
+    <!-- Add browser hints -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 </head>
 <body>
     <header>
@@ -29,6 +40,11 @@
                     <li><a href="../index.html#about">About</a></li>
                 </ul>
             </nav>
+            <div class="theme-toggle">
+                <button id="theme-toggle-btn">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
             <div class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </div>
@@ -58,24 +74,45 @@
                 <div class="file-list" id="file-list"></div>
                 <div class="tool-options" id="tool-options">
                     <div class="option-group">
-                        <label for="compression-level">Compression Level</label>
-                        <select id="compression-level">
-                            <option value="low">Low (Better Quality)</option>
-                            <option value="medium" selected>Medium (Balanced)</option>
-                            <option value="high">High (Smaller Size)</option>
-                            <option value="very-high">Very High (Maximum Compression)</option>
+                        <label for="compression-mode">Compression Mode</label>
+                        <select id="compression-mode">
+                            <option value="quality">Compress by Quality</option>
+                            <option value="size">Compress to Target Size</option>
                         </select>
                     </div>
-                    <div class="option-group">
-                        <label for="image-quality">Image Quality</label>
-                        <input type="range" id="image-quality" min="1" max="100" value="70">
-                        <span id="image-quality-value">70</span>
+                    
+                    <div id="quality-controls">
+                        <div class="option-group">
+                            <label for="compression-level">Compression Level</label>
+                            <select id="compression-level">
+                                <option value="low">Low (Better Quality)</option>
+                                <option value="medium" selected>Medium (Balanced)</option>
+                                <option value="high">High (Smaller Size)</option>
+                                <option value="very-high">Very High (Maximum Compression)</option>
+                            </select>
+                        </div>
+                        <div class="option-group">
+                            <label for="image-quality">Image Quality</label>
+                            <input type="range" id="image-quality" min="1" max="100" value="70">
+                            <span id="image-quality-value">70</span>
+                        </div>
                     </div>
+                    
+                    <div id="size-controls" style="display: none;">
+                        <div class="option-group">
+                            <label for="target-size">Target Size (KB)</label>
+                            <input type="number" id="target-size" min="1" value="1000" step="100">
+                        </div>
+                    </div>
+                    
                     <div class="option-group">
-                        <label for="remove-metadata">
-                            <input type="checkbox" id="remove-metadata" checked>
-                            Remove Metadata
-                        </label>
+                        <div class="metadata-toggle">
+                            <input type="checkbox" id="remove-metadata" class="toggle-checkbox">
+                            <label for="remove-metadata">
+                                <i class="fas fa-trash-alt"></i>
+                                Remove metadata
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div class="action-buttons">
@@ -173,7 +210,8 @@
         </div>
     </footer>
 
-    <script src="../js/main.js"></script>
-    <script src="../js/enhanced-tools.js" data-tool-id="pdf-compressor"></script>
+    <!-- Move scripts to bottom and add defer -->
+    <script src="../js/main.js" defer></script>
+    <script src="../js/pdf-compressor.js" defer></script>
 </body>
-</html> 
+</html>
