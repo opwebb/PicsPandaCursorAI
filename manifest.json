@@ -2,7 +2,7 @@
   "name": "PicsPanda - Image & PDF Tools",
   "short_name": "PicsPanda",
   "description": "Free online tools for image and PDF processing",
-  "start_url": "./index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#4a6cf7",

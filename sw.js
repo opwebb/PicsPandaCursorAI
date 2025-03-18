@@ -1,15 +1,15 @@
 const CACHE_NAME = 'picspanda-v1';
 const urlsToCache = [
-  './',
-  './index.html',
-  './css/styles.css',
-  './js/main.js',
-  './images/picspanda-logo.svg',
-  './manifest.json',
-  './offline.html',
-  './css/install-prompt.css',
-  './js/pwa.js',
-  './js/theme-toggle.js'
+  '/',
+  '/index.html',
+  '/css/styles.css',
+  '/js/main.js',
+  '/images/picspanda-logo.svg',
+  '/manifest.json',
+  '/offline.html',
+  '/css/install-prompt.css',
+  '/js/pwa.js',
+  '/js/theme-toggle.js'
 ];
 
 self.addEventListener('install', event => {
