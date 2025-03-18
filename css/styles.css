@@ -1880,3 +1880,8 @@ copyright p {
 .section-title {
     color: var(--section-title-color);
 }
+
+/* Theme Toggle Styles - Hide on tool pages */
+.tools-page .theme-toggle {
+    display: none;
+}
