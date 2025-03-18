@@ -5,13 +5,17 @@ class PWAPrompt {
         this.showCount = 0;
         this.maxPrompts = 3;
         this.daysToWait = 7;
+        this.deferredPrompt = null; // Add this line
     }
 
     init() {
-        // Only show prompt if it's a PWA-compatible browser
+        // Only setup event listener first
+        this.setupInstallPrompt();
+        
+        // Then check if we should show prompt
         if (this.isPWACompatible()) {
             this.createPrompt();
-            this.handleInstallation();
+            this.setupEventListeners();
             this.checkAndShow();
         }
     }
@@ -57,23 +61,36 @@ class PWAPrompt {
         this.installButton = installBtn;
     }
 
-    handleInstallation() {
+    setupInstallPrompt() {
         window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent Chrome 76+ from automatically showing the prompt
             e.preventDefault();
+            // Stash the event so it can be triggered later
             this.deferredPrompt = e;
-            this.installButton.disabled = false;
+            console.log('Install prompt ready');
         });
 
         window.addEventListener('appinstalled', () => {
             this.hidePrompt();
             localStorage.setItem('pwaInstalled', 'true');
+            console.log('PWA installed successfully');
         });
     }
 
     async installPWA() {
-        if (!this.deferredPrompt) return;
+        if (!this.deferredPrompt) {
+            console.log('No installation prompt available');
+            return;
+        }
+
+        // Show the install prompt
         this.deferredPrompt.prompt();
+
+        // Wait for the user to respond to the prompt
         const { outcome } = await this.deferredPrompt.userChoice;
+        console.log(`User response to the install prompt: ${outcome}`);
+
+        // Clear the saved prompt since it can't be used again
         this.deferredPrompt = null;
     }
 
