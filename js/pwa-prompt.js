@@ -8,9 +8,21 @@ class PWAPrompt {
     }
 
     init() {
-        this.createPrompt();
-        this.handleInstallation();
-        this.checkAndShow();
+        // Only show prompt if it's a PWA-compatible browser
+        if (this.isPWACompatible()) {
+            this.createPrompt();
+            this.handleInstallation();
+            this.checkAndShow();
+        }
+    }
+
+    isPWACompatible() {
+        return (
+            'serviceWorker' in navigator &&
+            'BeforeInstallPromptEvent' in window &&
+            !window.matchMedia('(display-mode: standalone)').matches &&
+            !localStorage.getItem('pwaInstalled')
+        );
     }
 
     createPrompt() {
@@ -89,8 +101,8 @@ class PWAPrompt {
     }
 }
 
-// Initialize PWA prompt
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize only when DOM is ready
+window.addEventListener('load', () => {
     const pwaPrompt = new PWAPrompt();
     pwaPrompt.init();
 });
