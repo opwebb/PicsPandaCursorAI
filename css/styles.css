@@ -191,6 +191,8 @@ nav.active ul li a {
     padding: 80px 0;
     text-align: center;
     color: #fff;
+    position: relative;
+    z-index: 1; /* Lower z-index */
 }
 
 @keyframes gradient {
@@ -328,6 +330,9 @@ nav.active ul li a {
 /* Tools Section */
 .tools-section {
     padding: 60px 0;
+    position: relative;
+    z-index: 2; /* Higher z-index than hero */
+    background-color: var(--bg-primary);
 }
 
 .tools-section h2 {
@@ -351,6 +356,8 @@ nav.active ul li a {
     transition: var(--transition);
     cursor: pointer;
     text-align: center;
+    position: relative;
+    z-index: 3; /* Higher z-index than tools-section */
 }
 
 .tool-card:hover {
@@ -384,6 +391,8 @@ nav.active ul li a {
     font-size: 0.9rem;
     font-weight: 500;
     transition: var(--transition);
+    position: relative;
+    z-index: 4; /* Highest z-index to ensure clickability */
 }
 
 .tool-link:hover {
